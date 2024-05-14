@@ -1,0 +1,204 @@
+//Kis András készítette
+private string jelenlegiSzam = "";
+private string elozoSzam = "";
+private string muvelet = "";
+
+public MainWindow()
+{
+    InitializeComponent();
+    this.KeyDown += new System.Windows.Input.KeyEventHandler(FoAblak_BillentyuLenyomas);
+}
+
+private void SzamGomb_Click(object sender, RoutedEventArgs e)
+{
+    Button button = sender as Button;
+    if (button != null)
+    {
+        if (button.Content.ToString() == ".")
+        {
+            if (!jelenlegiSzam.Contains("."))
+            {
+                jelenlegiSzam += ".";
+            }
+        }
+        else
+        {
+            jelenlegiSzam += button.Content.ToString();
+        }
+        Kijelzo.Text = jelenlegiSzam;
+    }
+}
+
+private void MuveletijelGomb_Click(object sender, RoutedEventArgs e)
+{
+    Button button = sender as Button;
+    if (button != null)
+    {
+        if (jelenlegiSzam != "")
+        {
+            if (!string.IsNullOrEmpty(jelenlegiSzam))
+            {
+                if (!string.IsNullOrEmpty(elozoSzam))
+                {
+                    EredmenyKiszamitas();
+                }
+                elozoSzam = jelenlegiSzam;
+                jelenlegiSzam = "";
+            }
+            
+            muvelet = button.Content.ToString();
+        }
+    }
+}
+
+private void EgyenlosegjelGomb_Click(object sender, RoutedEventArgs e)
+{
+    if (elozoSzam != "" && jelenlegiSzam != "")
+    {
+        // '.' és ','-vel is működjön a tizedes tört
+        string num1Str = elozoSzam.Replace('.', ',');
+        string num2Str = jelenlegiSzam.Replace('.', ',');
+
+        double num1;
+        double num2;
+
+        if (double.TryParse(num1Str, out num1) && double.TryParse(num2Str, out num2))
+        {
+            double eredmeny = 0;
+
+            switch (muvelet)
+            {
+                case "+":
+                    eredmeny = num1 + num2;
+                    break;
+                case "-":
+                    eredmeny = num1 - num2;
+                    break;
+                case "*":
+                    eredmeny = num1 * num2;
+                    break;
+                case "/":
+                    if (num2 != 0)
+                    {
+                        eredmeny = num1 / num2;
+                    }
+                    else
+                    {
+                        MessageBox.Show("A nullával való osztás nem engedélyezett!", "Hiba!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
+                    break;
+            }
+
+            Kijelzo.Text = eredmeny.ToString();
+            jelenlegiSzam = eredmeny.ToString();
+            elozoSzam = "";
+            muvelet = "";
+        }
+        else
+        {
+            MessageBox.Show("Érvénytelen számformátum", "Hiba!", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+    }
+}
+
+private void TorlesGomb_Click(object sender, RoutedEventArgs e)
+{
+    jelenlegiSzam = "";
+    elozoSzam = "";
+    muvelet = "";
+    Kijelzo.Text = "0";
+}
+//Kis András készítette
+private void SzamMellekeles(string szam)
+{
+    if (szam == ".")
+    {
+        if (!jelenlegiSzam.Contains("."))
+        {
+            jelenlegiSzam += ".";
+        }
+    }
+    else
+    {
+        jelenlegiSzam += szam;
+    }
+    Kijelzo.Text = jelenlegiSzam;
+}
+
+private void SetMuvelet(string op)
+{
+    if (!string.IsNullOrEmpty(jelenlegiSzam))
+    {
+        if (!string.IsNullOrEmpty(elozoSzam))
+        {
+            EredmenyKiszamitas();
+            elozoSzam = jelenlegiSzam;
+            jelenlegiSzam = "";
+        }
+        else
+        {
+            elozoSzam = jelenlegiSzam;
+            jelenlegiSzam = "";
+        }
+    }
+    muvelet = op;
+}
+
+private void EredmenyKiszamitas()
+{
+    if (elozoSzam != "" && jelenlegiSzam != "")
+    {
+        string num1Str = elozoSzam.Replace('.', ',');
+        string num2Str = jelenlegiSzam.Replace('.', ',');
+
+        double num1;
+        double num2;
+
+        if (double.TryParse(num1Str, out num1) && double.TryParse(num2Str, out num2))
+        {
+            double eredmeny = 0;
+
+            switch (muvelet)
+            {
+                case "+":
+                    eredmeny = num1 + num2;
+                    break;
+                case "-":
+                    eredmeny = num1 - num2;
+                    break;
+                case "*":
+                    eredmeny = num1 * num2;
+                    break;
+                case "/":
+                    if (num2 != 0)
+                    {
+                        eredmeny = num1 / num2;
+                    }
+                    else
+                    {
+                        MessageBox.Show("A nullával való osztás nem engedélyezett.", "Hiba!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
+                    break;
+            }
+
+            Kijelzo.Text = eredmeny.ToString();
+            jelenlegiSzam = eredmeny.ToString();
+            elozoSzam = "";
+            muvelet = "";
+        }
+        else
+        {
+            MessageBox.Show("Érvénytelen számformátum", "Hiba!", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+    }
+}
+
+private void SzamologepTorlese()
+{
+    jelenlegiSzam = "";
+    elozoSzam = "";
+    muvelet = "";
+    Kijelzo.Text = "0";
+}
