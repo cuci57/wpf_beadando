@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CalculatorApp</name>
+    </assembly>
+    <members>
+        <member name="T:CalculatorApp.MainWindow">
+            <summary>
+            Calculator alkalmazás főablaka.
+            </summary>
+        </member>
+        
+        <member name="M:CalculatorApp.MainWindow.#ctor">
+            <summary>
+            MainWindow osztály konstruktora.
+            </summary>
+        </member>
+        
+        <member name="M:CalculatorApp.MainWindow.SzamGomb_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Kezeli a számgombok kattintás eseményét.
+            </summary>
+            <param name="sender">Az eseményt kiváltó objektum.</param>
+            <param name="e">Az esemény adatai.</param>
+        </member>
+        
+        <member name="M:CalculatorApp.MainWindow.MuveletijelGomb_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Kezeli a műveleti jelek gombjainak kattintás eseményét.
+            </summary>
+            <param name="sender">Az eseményt kiváltó objektum.</param>
+            <param name="e">Az esemény adatai.</param>
+        </member>
+        
+        <member name="M:CalculatorApp.MainWindow.EgyenlosegjelGomb_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Kezeli az egyenlőségjel gombjának kattintás eseményét.
+            </summary>
+            <param name="sender">Az eseményt kiváltó objektum.</param>
+            <param name="e">Az esemény adatai.</param>
+        </member>
+        
+        <member name="M:CalculatorApp.MainWindow.TorlesGomb_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Kezeli a törlés gombjának kattintás eseményét.
+            </summary>
+            <param name="sender">Az eseményt kiváltó objektum.</param>
+            <param name="e">Az esemény adatai.</param>
+        </member>
+        
+        <member name="M:CalculatorApp.MainWindow.FoAblak_BillentyuLenyomas(System.Object,System.Windows.Input.KeyEventArgs)">
+            <summary>
+            Kezeli a főablak billentyű lenyomás eseményét.
+            </summary>
+            <param name="sender">Az eseményt kiváltó objektum.</param>
+            <param name="e">Az esemény adatai.</param>
+        </member>
+        
+        <member name="M:CalculatorApp.MainWindow.SzamMellekels(System.String)">
+            <summary>
+            Hozzáfűz egy számjegyet vagy tizedesjegyet az aktuális számhoz.
+            </summary>
+            <param name="szam">A hozzáadni kívánt számjegy vagy tizedesjegy.</param>
+        </member>
+        
+        <member name="M:CalculatorApp.MainWindow.SetMuvelet(System.String)">
+            <summary>
+            Beállítja a műveleti jelet és előkészíti az előző számot a művelet végrehajtásához.
+            </summary>
+            <param name="op">A műveleti jel.</param>
+        </member>
+        
+        <member name="M:CalculatorApp.MainWindow.EredmenyKiszamitas">
+            <summary>
+            Kiszámítja a művelet eredményét a megadott számok alapján.
+            </summary>
+        </member>
+        
+        <member name="M:CalculatorApp.MainWindow.ClearCalculator">
+            <summary>
+            Törli a számológép aktuális állapotát és alaphelyzetbe állítja a kijelzőt.
+            </summary>
+        </member>
+        
+        <member name="F:CalculatorApp.MainWindow.jelenlegiSzam">
+            <summary>
+            Az aktuálisan beírt számot tárolja.
+            </summary>
+        </member>
+        
+        <member name="F:CalculatorApp.MainWindow.elozoSzam">
+            <summary>
+            Az előzőleg beírt számot tárolja a műveletek végrehajtásához.
+            </summary>
+        </member>
+        
+        <member name="F:CalculatorApp.MainWindow.muvelet">
+            <summary>
+            Az aktuálisan kiválasztott műveleti jelet tárolja.
+            </summary>
+        </member>
+    </members>
+</doc>
